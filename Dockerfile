@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.21-alpine AS builder
+FROM --platform=linux/arm/v7 golang:1.21-alpine AS builder
 
 WORKDIR /app
 
