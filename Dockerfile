@@ -3,11 +3,11 @@ FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
 
-# Copiar los archivos del módulo y descargar dependencias
-COPY go.mod go.sum ./
+# Copiar los archivos necesarios para descargar dependencias
+COPY go.mod .
 RUN go mod download
 
-# Copiar el código fuente
+# Copiar el resto del código fuente
 COPY . .
 
 # Construir la aplicación
@@ -26,7 +26,7 @@ COPY --from=builder /app/stock-tracker .
 COPY --from=builder /app/.env .
 
 # Puerto expuesto
-EXPOSE 8080
+EXPOSE 8081
 
 # Comando para ejecutar la aplicación
 CMD ["./stock-tracker"]
