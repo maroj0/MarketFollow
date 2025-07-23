@@ -1,7 +1,9 @@
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     container_name: stock-tracker
     restart: unless-stopped
     ports:
